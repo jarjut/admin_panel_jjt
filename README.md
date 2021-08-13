@@ -1,4 +1,4 @@
-# admin_panel_jjt
+# JJT Admin Panel | Responsive Admin Panel with Flutter
 
 A new Flutter project.
 
