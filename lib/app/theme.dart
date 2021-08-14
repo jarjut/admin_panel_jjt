@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const MaterialColor primaryColor = Colors.purple;
-const MaterialColor accentColor = Colors.blue;
+const MaterialColor primaryColor = Colors.blue;
+const MaterialColor accentColor = Colors.purple;
 
 const InputDecorationTheme _inputDecorationTheme = InputDecorationTheme(
   errorStyle: TextStyle(fontSize: 11, height: 0.4),
@@ -32,5 +32,6 @@ ThemeData darkTheme() => ThemeData(
       primaryColorDark: primaryColor[700],
       accentColor: accentColor,
       canvasColor: const Color(0xFF24232F),
+      inputDecorationTheme: _inputDecorationTheme,
       textTheme: GoogleFonts.latoTextTheme(ThemeData.dark().textTheme),
     );
