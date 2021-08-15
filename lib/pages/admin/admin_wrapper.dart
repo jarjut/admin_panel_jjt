@@ -1,8 +1,8 @@
-import 'package:admin_panel_jjt/utils/media_query_util.dart';
-import 'package:admin_panel_jjt/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
+import '../../utils/media_query_util.dart';
+import '../../widgets/responsive_widget.dart';
 import 'widgets/app_drawer.dart';
 import 'widgets/header.dart';
 
@@ -33,7 +33,7 @@ class AdminWrapper extends StatelessWidget {
       color: Theme.of(context).primaryColor,
       title: '$title | $kAppTitle',
       child: Scaffold(
-        drawer: mediaQuery.isTablet
+        drawer: mediaQuery.width <= kTabletBreakpoint
             ? const AppDrawer(
                 normalWidth: 300,
                 collapsible: false,
