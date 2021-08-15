@@ -2,6 +2,22 @@ import 'package:admin_panel_jjt/utils/media_query_util.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveOnlyWidget extends StatelessWidget {
+  /// The widget to display on desired screen
+  final Widget child;
+
+  /// Show widget on mobile screen
+  final bool mobile;
+
+  /// Show widget on tablet screen
+  final bool tablet;
+
+  /// Show widget on small desktop screen
+  final bool smallDesktop;
+
+  /// Show widget on desktop screen
+  final bool desktop;
+
+  /// Return a widget only on desired screen
   const ResponsiveOnlyWidget({
     Key? key,
     required this.child,
@@ -10,12 +26,6 @@ class ResponsiveOnlyWidget extends StatelessWidget {
     this.smallDesktop = false,
     this.desktop = false,
   }) : super(key: key);
-
-  final Widget child;
-  final bool mobile;
-  final bool tablet;
-  final bool smallDesktop;
-  final bool desktop;
 
   @override
   Widget build(BuildContext context) {
