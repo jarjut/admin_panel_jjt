@@ -14,6 +14,22 @@ class Header extends StatelessWidget {
       child: Row(
         children: [
           ResponsiveOnlyWidget(
+            mobile: true,
+            tablet: true,
+            child: Container(
+              height: 30,
+              width: 30,
+              margin: const EdgeInsets.only(right: 16.0),
+              child: IconButton(
+                padding: EdgeInsets.zero,
+                splashRadius: 24.0,
+                color: Theme.of(context).primaryColor,
+                onPressed: () => Scaffold.of(context).openDrawer(),
+                icon: const Icon(Icons.menu),
+              ),
+            ),
+          ),
+          ResponsiveOnlyWidget(
             desktop: true,
             smallDesktop: true,
             child: Expanded(
