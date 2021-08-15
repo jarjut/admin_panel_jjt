@@ -1,3 +1,5 @@
+import 'package:admin_panel_jjt/pages/admin/admin_wrapper.dart';
+import 'package:admin_panel_jjt/pages/admin/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 import '../../constants/constants.dart';
@@ -8,51 +10,9 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Title(
-      color: Theme.of(context).primaryColor,
-      title: 'Dashboard | $kAppTitle',
-      child: Scaffold(
-        body: Row(
-          children: [
-            const AppDrawer(),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 36.0, vertical: 20.0),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).primaryColor.withAlpha(30),
-                      Theme.of(context).accentColor.withAlpha(30),
-                    ],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: kToolbarHeight,
-                      child: Row(
-                        children: const [
-                          Expanded(child: Text('Title')),
-                          Icon(Icons.settings),
-                          Icon(Icons.settings),
-                        ],
-                      ),
-                    ),
-                    const Expanded(
-                      child: Center(
-                        child: Text('Dashboard'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
+    return const AdminWrapper(
+      title: 'Dashboard',
+      body: Text('Dashboard'),
     );
   }
 }

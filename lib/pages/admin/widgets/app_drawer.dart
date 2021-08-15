@@ -6,26 +6,40 @@ class AppDrawer extends StatefulWidget {
     Key? key,
     this.collapsible = true,
     this.isCollapsed = false,
+    this.normalWidth = 228,
   }) : super(key: key);
 
   final bool collapsible;
   final bool isCollapsed;
+  final double normalWidth;
 
   @override
   _AppDrawerState createState() => _AppDrawerState();
 }
 
 class _AppDrawerState extends State<AppDrawer> {
-  double drawerNormalWidth = 228;
+  late double drawerNormalWidth = widget.normalWidth;
   double drawerCollapsedWidth = 64;
-  late bool isCollapsed;
-  late bool showTitle;
+  late bool isCollapsed = widget.isCollapsed;
+  late bool showTitle = !isCollapsed;
 
   @override
-  void initState() {
+  void didUpdateWidget(covariant AppDrawer oldWidget) {
     isCollapsed = widget.isCollapsed;
-    showTitle = !isCollapsed;
-    super.initState();
+    drawerNormalWidth = widget.normalWidth;
+    if (isCollapsed) {
+      showTitle = false;
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void collapse() {
+    setState(() {
+      isCollapsed = !isCollapsed;
+      if (isCollapsed) {
+        showTitle = false;
+      }
+    });
   }
 
   @override
@@ -41,6 +55,7 @@ class _AppDrawerState extends State<AppDrawer> {
       },
       child: SafeArea(
         child: Drawer(
+          elevation: 0,
           child: IconTheme(
             data: const IconThemeData(
               size: 28.0,
@@ -107,14 +122,7 @@ class _AppDrawerState extends State<AppDrawer> {
                               child: IconButton(
                                 iconSize: 32.0,
                                 color: Theme.of(context).primaryColorDark,
-                                onPressed: () {
-                                  setState(() {
-                                    isCollapsed = !isCollapsed;
-                                    if (isCollapsed) {
-                                      showTitle = false;
-                                    }
-                                  });
-                                },
+                                onPressed: () => collapse(),
                                 icon: isCollapsed
                                     ? const Icon(Icons.chevron_right)
                                     : const Icon(Icons.chevron_left),
