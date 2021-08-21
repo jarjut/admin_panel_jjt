@@ -16,3 +16,5 @@ jobs:
 
       - name: Deploy Flutter web app to github pages
         uses: erickzanardo/flutter-gh-pages@v3
+        with:
+          webRenderer: canvaskit
