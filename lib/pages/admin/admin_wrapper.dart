@@ -50,35 +50,45 @@ class AdminWrapper extends StatelessWidget {
               desktopWidget: AppDrawer(),
             ),
             Expanded(
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: mediaQuery.width <= kTabletBreakpoint
-                      ? mobileHorizontalPadding
-                      : desktopHorizontalPadding,
-                  vertical: mediaQuery.width <= kTabletBreakpoint
-                      ? mobileVerticalPadding
-                      : desktopVerticalPadding,
-                ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).primaryColor.withAlpha(30),
-                      Theme.of(context).accentColor.withAlpha(30),
-                    ],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                  ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Header(),
-                    const SizedBox(height: 24.0),
-                    Expanded(
-                      child: body,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Theme.of(context).primaryColor.withAlpha(30),
+                            Theme.of(context).accentColor.withAlpha(30),
+                          ],
+                          begin: Alignment.topRight,
+                          end: Alignment.bottomLeft,
+                        ),
+                      ),
                     ),
-                  ],
-                ),
+                  ),
+                  Positioned.fill(
+                    child: SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: mediaQuery.width <= kTabletBreakpoint
+                              ? mobileHorizontalPadding
+                              : desktopHorizontalPadding,
+                          vertical: mediaQuery.width <= kTabletBreakpoint
+                              ? mobileVerticalPadding
+                              : desktopVerticalPadding,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Header(),
+                            const SizedBox(height: 20.0),
+                            body,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

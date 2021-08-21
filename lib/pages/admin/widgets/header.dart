@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../widgets/responsive_only_widget.dart';
+import '../../../widgets/responsive_preferred_widget.dart';
 import '../../../widgets/responsive_widget.dart';
 import 'header_search_field.dart';
 
@@ -13,7 +13,7 @@ class Header extends StatelessWidget {
       height: 56.0,
       child: Row(
         children: [
-          ResponsiveOnlyWidget(
+          ResponsivePreferredWidget(
             mobile: true,
             tablet: true,
             child: Container(
@@ -29,7 +29,7 @@ class Header extends StatelessWidget {
               ),
             ),
           ),
-          ResponsiveOnlyWidget(
+          ResponsivePreferredWidget(
             desktop: true,
             smallDesktop: true,
             child: Expanded(

@@ -6,7 +6,7 @@ class ResponsiveWidget extends StatelessWidget {
   /// Widget for mobile screen
   final Widget mobileWidget;
 
-  /// Widget for table screen
+  /// Widget for tablet screen
   final Widget? tabletWidget;
 
   /// Widget for small desktop screen

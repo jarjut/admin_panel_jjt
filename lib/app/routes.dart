@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:vrouter/vrouter.dart';
 
 import '../pages/authentication/login_page.dart';
-import '../pages/admin/dashboard_page.dart';
+import '../pages/admin/dashboard/dashboard_page.dart';
 import '../repositories/authentication_repository.dart';
 import 'bloc/authentication_bloc.dart';
 

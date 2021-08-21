@@ -32,6 +32,7 @@ ThemeData darkTheme() => ThemeData(
       primaryColorDark: primaryColor[700],
       accentColor: accentColor,
       canvasColor: const Color(0xFF24232F),
+      cardColor: const Color(0xFF24232F),
       inputDecorationTheme: _inputDecorationTheme,
       textTheme: GoogleFonts.latoTextTheme(ThemeData.dark().textTheme),
     );

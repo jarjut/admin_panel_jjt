@@ -1,8 +1,9 @@
-import 'package:admin_panel_jjt/utils/media_query_util.dart';
 import 'package:flutter/material.dart';
 
-class ResponsiveOnlyWidget extends StatelessWidget {
-  /// The widget to display on desired screen
+import '../utils/media_query_util.dart';
+
+class ResponsivePreferredWidget extends StatelessWidget {
+  /// The widget to display on preferred screen
   final Widget child;
 
   /// Show widget on mobile screen
@@ -17,8 +18,8 @@ class ResponsiveOnlyWidget extends StatelessWidget {
   /// Show widget on desktop screen
   final bool desktop;
 
-  /// Return a widget only on desired screen
-  const ResponsiveOnlyWidget({
+  /// Return a widget only on preferred screen
+  const ResponsivePreferredWidget({
     Key? key,
     required this.child,
     this.mobile = false,
