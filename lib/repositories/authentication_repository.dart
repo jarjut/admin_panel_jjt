@@ -9,13 +9,12 @@ const String kAccesToken = 'accessToken';
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
-  final SharedPreferences sharedPrefs;
   final _controller = StreamController<AuthenticationStatus>();
 
-  AuthenticationRepository({required this.sharedPrefs});
+  AuthenticationRepository();
 
   Stream<AuthenticationStatus> get authStatus async* {
-    yield hasToken()
+    yield await hasToken()
         ? AuthenticationStatus.authenticated
         : AuthenticationStatus.unauthenticated;
     yield* _controller.stream;
@@ -28,7 +27,7 @@ class AuthenticationRepository {
     // Dummy Login
     await Future.delayed(const Duration(seconds: 1));
     if (username == 'admin' && password == 'admin') {
-      saveToken('token');
+      await saveToken('token');
       _controller.add(AuthenticationStatus.authenticated);
     } else {
       throw ('Invalid Credential');
@@ -41,7 +40,7 @@ class AuthenticationRepository {
   }
 
   Future<void> signOut() async {
-    deleteToken(kAccesToken);
+    await deleteToken(kAccesToken);
     _controller.add(AuthenticationStatus.unauthenticated);
   }
 
@@ -51,16 +50,19 @@ class AuthenticationRepository {
 
   // =========== Token ==============
 
-  void saveToken(String token) {
+  Future<void> saveToken(String token) async {
+    final sharedPrefs = await SharedPreferences.getInstance();
     sharedPrefs.setString(kAccesToken, token);
   }
 
-  bool hasToken() {
+  Future<bool> hasToken() async {
+    final sharedPrefs = await SharedPreferences.getInstance();
     final token = sharedPrefs.getString(kAccesToken);
     return token != null;
   }
 
-  void deleteToken(String token) {
+  Future<void> deleteToken(String token) async {
+    final sharedPrefs = await SharedPreferences.getInstance();
     sharedPrefs.remove(kAccesToken);
   }
 }

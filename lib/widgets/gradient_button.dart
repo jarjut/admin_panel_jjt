@@ -29,8 +29,8 @@ class GradientButton extends StatelessWidget {
             LinearGradient(
               colors: [
                 linearGradientColor.shade900,
-                linearGradientColor,
-                linearGradientColor.shade300,
+                linearGradientColor.shade600,
+                linearGradientColor.shade400,
               ],
             ),
         borderRadius: borderRadius,

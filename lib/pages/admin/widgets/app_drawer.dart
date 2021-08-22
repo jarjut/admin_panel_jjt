@@ -95,12 +95,8 @@ class _AppDrawerState extends State<AppDrawer> {
                         selected: true,
                       ),
                       ListTile(
-                        leading: const Icon(Icons.dashboard),
-                        title: showTitle ? const Text('Dashboard') : null,
-                      ),
-                      ListTile(
-                        leading: const Icon(Icons.dashboard),
-                        title: showTitle ? const Text('Dashboard') : null,
+                        leading: const Icon(Icons.table_chart),
+                        title: showTitle ? const Text('Tables') : null,
                       ),
                     ],
                   ),

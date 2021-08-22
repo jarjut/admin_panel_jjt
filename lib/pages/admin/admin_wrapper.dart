@@ -68,22 +68,24 @@ class AdminWrapper extends StatelessWidget {
                   ),
                   Positioned.fill(
                     child: SingleChildScrollView(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: mediaQuery.width <= kTabletBreakpoint
-                              ? mobileHorizontalPadding
-                              : desktopHorizontalPadding,
-                          vertical: mediaQuery.width <= kTabletBreakpoint
-                              ? mobileVerticalPadding
-                              : desktopVerticalPadding,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Header(),
-                            const SizedBox(height: 20.0),
-                            body,
-                          ],
+                      child: SafeArea(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: mediaQuery.width <= kTabletBreakpoint
+                                ? mobileHorizontalPadding
+                                : desktopHorizontalPadding,
+                            vertical: mediaQuery.width <= kTabletBreakpoint
+                                ? mobileVerticalPadding
+                                : desktopVerticalPadding,
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Header(),
+                              const SizedBox(height: 20.0),
+                              body,
+                            ],
+                          ),
                         ),
                       ),
                     ),
