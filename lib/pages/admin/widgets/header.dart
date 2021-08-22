@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../repositories/authentication_repository.dart';
 import '../../../widgets/responsive_preferred_widget.dart';
 import '../../../widgets/responsive_widget.dart';
 import 'header_search_field.dart';
@@ -67,9 +69,27 @@ class Header extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8.0),
-          const CircleAvatar(
-            child: Icon(Icons.person),
-            maxRadius: 16,
+          PopupMenuButton(
+            child: const CircleAvatar(
+              child: Icon(Icons.person),
+              maxRadius: 16,
+            ),
+            tooltip: null,
+            offset: const Offset(-4, 36),
+            onSelected: (int index) {
+              if (index == 0) {
+                RepositoryProvider.of<AuthenticationRepository>(context)
+                    .signOut();
+              }
+            },
+            itemBuilder: (context) {
+              return <PopupMenuItem<int>>[
+                const PopupMenuItem(
+                  value: 0,
+                  child: Text('Logout'),
+                ),
+              ];
+            },
           ),
         ],
       ),

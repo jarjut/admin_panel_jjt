@@ -69,10 +69,10 @@ class DashboardPieChartTwo extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16.0),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+            Wrap(
               children: [
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       width: 12.0,
@@ -88,6 +88,7 @@ class DashboardPieChartTwo extends StatelessWidget {
                 ),
                 const SizedBox(width: 8.0),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
                       width: 12.0,
