@@ -23,6 +23,16 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
+    void login() {
+      if (_loginFormKey.currentState!.validate()) {
+        // Login
+        String username = _loginFormKey.currentState!.fields['username']!.value;
+        String password = _loginFormKey.currentState!.fields['password']!.value;
+
+        BlocProvider.of<LoginCubit>(context).login(username, password);
+      }
+    }
+
     return FormBuilder(
       key: _loginFormKey,
       child: Column(
@@ -48,6 +58,8 @@ class _LoginFormState extends State<LoginForm> {
           FormBuilderTextField(
             name: 'username',
             validator: FormBuilderValidators.required(context),
+            autofocus: true,
+            textInputAction: TextInputAction.next,
             decoration: const InputDecoration(
               hintText: 'Username',
               isDense: true,
@@ -65,6 +77,8 @@ class _LoginFormState extends State<LoginForm> {
             name: 'password',
             obscureText: true,
             validator: FormBuilderValidators.required(context),
+            textInputAction: TextInputAction.done,
+            onSubmitted: (value) => login(),
             decoration: const InputDecoration(
               hintText: 'Password',
               isDense: true,
@@ -84,18 +98,7 @@ class _LoginFormState extends State<LoginForm> {
                 width: double.infinity,
                 height: 36,
                 child: GradientButton(
-                  onPressed: () {
-                    if (_loginFormKey.currentState!.validate()) {
-                      // Login
-                      String username =
-                          _loginFormKey.currentState!.fields['username']!.value;
-                      String password =
-                          _loginFormKey.currentState!.fields['password']!.value;
-
-                      BlocProvider.of<LoginCubit>(context)
-                          .login(username, password);
-                    }
-                  },
+                  onPressed: () => login(),
                   linearGradientColor: primaryColor,
                   child: state.status == LoginStatus.loading
                       ? const SizedBox(
